@@ -1,9 +1,10 @@
 import './App.css';
+import Router from './routes';
 
 function App() {
   return (
     <div className="App">
-      <h1>MERN 1</h1>
+      <Router />
     </div>
   );
 }
