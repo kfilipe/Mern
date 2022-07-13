@@ -1,4 +1,4 @@
-Saudações caro leitor! Aqui tentarei listar o passo a passo do projeto para consultas futuras.
+Saudações, caro leitor! Aqui tentarei listar o passo a passo do projeto para consultas futuras.
 
 Neste projeto criarei usarei o MERN (Mongo, Express, React e Nodejs).
 
@@ -9,6 +9,8 @@ IMPORTANTE
 - INSTALAR O NODEJS E MONGODB na máquina
 
 ** Configurando o Projeto **
+
+----------------BACKEND---------------
 
 1º - Criei o arquivo server.js
 2º - Instalei as dependências do projeto (Seguem abaixo):
@@ -22,3 +24,11 @@ IMPORTANTE
 
 3º - Importar as dependêcias e configurar o servidor
 4º - Estruturação de pastas.
+
+
+-------------FRONTEND-----------------
+
+1º - Instalar o projeto react (npx create-react-app client) na raiz do projeto
+2º - Instalar o react router dom (v6)
+3º - Instalar o MUI MATERIAL (framework usado para o front)
+4º - Estruturação das pastas.

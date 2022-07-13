@@ -9,19 +9,45 @@ import Grid from '@mui/material/Grid';
 // import ImgAdmin from '../../../assets/img/GERAL.png'
 import MenuAdmin from '../../../components/menu-admin';
 import Footer from '../../../components/footer-admin'
-import { FormControl, InputLabel, MenuItem, Paper, Select, TextField } from '@mui/material';
+import { Button, FormControl, InputLabel, MenuItem, Paper, Select, TextField } from '@mui/material';
+import api from '../../../services/api';
 
 
 
 const mdTheme = createTheme();
 
-function UsuarioCadastrar() {
+export default function UsuarioCadastrar() {
 
-    // const [age, setAge] = useState('');
+    const [nome, setNome] = React.useState('')
+    const [email, setEmail] = React.useState('')
+    const [senha, setSenha] = React.useState('')
+    const [tipo, setTipo] = React.useState('')
 
     // const handleChange = (event: SelectChangeEvent) => {
     //     setAge(event.target.value);
     // };
+
+    async function handleSubmit() {
+        const data = {
+            nome_usuario: nome,
+            email_usuario: email,
+            senha_usuario: senha,
+            tipo_usuario: tipo
+        }
+
+
+        if (nome !== '' && email !== '' && senha !== '' && tipo !== '') {
+            const response = await api.post('http://localhost:5000/api/usuarios', data)
+
+            if (response.status === 200) {
+                window.location.href = '/admin/usuarios'
+            } else {
+                alert('Error ao cadastrar o usuário')
+            }
+        } else {
+            alert('Preencha todos os dados!')
+        }
+    }
 
     return (
         <ThemeProvider theme={mdTheme}>
@@ -54,7 +80,7 @@ function UsuarioCadastrar() {
                                         p: 2,
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        height: 240,
+                                        height: 300,
                                     }}
                                 >
                                     <h2>Cadastro de Usuários</h2>
@@ -69,6 +95,8 @@ function UsuarioCadastrar() {
                                                 fullWidth
                                                 autoComplete="nome"
                                                 variant="standard"
+                                                value={nome}
+                                                onChange={e => setNome(e.target.value)}
                                             />
                                         </Grid>
 
@@ -81,6 +109,8 @@ function UsuarioCadastrar() {
                                                 fullWidth
                                                 autoComplete="email"
                                                 variant="standard"
+                                                value={email}
+                                                onChange={e => setEmail(e.target.value)}
                                             />
                                         </Grid>
 
@@ -90,8 +120,8 @@ function UsuarioCadastrar() {
                                                 <Select
                                                     labelId="labelTipo"
                                                     id="tipo"
-                                                    // value={age}
-                                                    // onChange={handleChange}
+                                                    value={tipo}
+                                                    onChange={e => setTipo(e.target.value)}
                                                     label="Perfil"
                                                 >
                                                     <MenuItem value="">
@@ -114,7 +144,15 @@ function UsuarioCadastrar() {
                                                 fullWidth
                                                 autoComplete="senha"
                                                 variant="standard"
+                                                value={senha}
+                                                onChange={e => setSenha(e.target.value)}
                                             />
+                                        </Grid>
+
+                                        <Grid item xs={12} sm={12}>
+                                            <Button variant="contained" color="primary" onClick={handleSubmit}>
+                                                Cadastrar
+                                            </Button>
                                         </Grid>
 
                                     </Grid>
@@ -132,6 +170,6 @@ function UsuarioCadastrar() {
     );
 }
 
-export default function Dashboard() {
-    return <UsuarioCadastrar />;
-}
+// export default function Dashboard() {
+//     return <UsuarioCadastrar />;
+// }
