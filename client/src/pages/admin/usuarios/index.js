@@ -33,6 +33,17 @@ function UsuariosListagem() {
         loadUsuarios();
     }, [])
 
+    async function handleDelete(id) {
+        if (window.confirm("Deseja excluir este usuário?")) {
+            const result = await api.delete('http://localhost:5000/api/usuarios/' + id)
+            if (result.status === 200) {
+                window.location.href = 'http://localhost:3000/admin/usuarios'
+            } else {
+                alert('Ocorreu um erro. Por favor, tente novamente!')
+            }
+        }
+    }
+
     return (
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
@@ -101,12 +112,14 @@ function UsuariosListagem() {
                                                                             color="secondary"
                                                                         />
 
-                                                                    }</TableCell>
+                                                                    }
+
+                                                                </TableCell>
                                                                 <TableCell align="center">{new Date(row.createdAt).toLocaleString('pt-br')}</TableCell>
                                                                 <TableCell align="right">
                                                                     <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                                                                        <Button color="primary" size="small">Atualizar</Button>
-                                                                        <Button color="secondary" size="small">Excluir</Button>
+                                                                        <Button color="primary" href={'/admin/usuarios/editar/' + row._id} size="small">Atualizar</Button>
+                                                                        <Button color="secondary" onClick={() => handleDelete(row._id)} size="small">Excluir</Button>
                                                                     </ButtonGroup>
                                                                 </TableCell>
                                                             </TableRow>
