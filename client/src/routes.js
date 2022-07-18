@@ -15,7 +15,7 @@ import UsuarioCadastrar from './pages/admin/usuarios/usuarios.cadastrar'
 // IMPORTS CLIENT
 import Home from './pages/client/home';
 import ProdutoDetails from './pages/client/produtos/produtos.details';
-// import Login from './pages/admin/login';
+import Login from './pages/admin/login';
 
 // import PrivateRoute from './services/wAuth';
 
@@ -29,7 +29,7 @@ function Router() {
                 <Route path="/produtos/:idProduto" element={<ProdutoDetails />} />
 
                 {/* Rota Admin */}
-                {/* <Route path="/admin/login" element={<Login />} /> */}
+                <Route path="/admin/login" element={<Login />} />
                 <Route path="/admin" element={<Dashboard />} />
 
                 <Route path="/admin/produtos" element={<Produtos />} />
