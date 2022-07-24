@@ -36,7 +36,7 @@ export const secondaryListItems = (
         <ListSubheader component="div" inset>
             Opções
         </ListSubheader>
-        <ListItemButton>
+        <ListItemButton onClick={handleLogout}>
             <ListItemIcon>
                 <LogoutIcon />
             </ListItemIcon>
@@ -44,3 +44,12 @@ export const secondaryListItems = (
         </ListItemButton>
     </React.Fragment>
 );
+
+function handleLogout() {
+    if (window.confirm("Deseja sair?")) {
+        localStorage.clear();
+        window.location.href = '/admin/login'
+    } else {
+        alert('Não foi possivel encerrar a sessão!')
+    }
+}

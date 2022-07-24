@@ -11,6 +11,7 @@ routes.get('/', Usuario.index)
 
 routes.post('/api/usuarios', Usuario.create)
 routes.post('/api/usuarios/login', Usuario.login)
+routes.get('/api/usuarios/checktoken', Usuario.checkToken)
 routes.get('/api/usuarios', Usuario.index)
 routes.get('/api/usuarios.details/:_id', Usuario.details)
 routes.delete('/api/usuarios/:_id', Usuario.delete)

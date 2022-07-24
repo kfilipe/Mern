@@ -35,7 +35,7 @@ export default function SignIn() {
 
     const [email, setEmail] = React.useState('')
     const [senha, setSenha] = React.useState('')
-    const [showPassword, setShowPassword] = React.useState(false);
+    // const [showPassword, setShowPassword] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
 
     async function handleSubmit() {
