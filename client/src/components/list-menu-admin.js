@@ -8,6 +8,9 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import LogoutIcon from '@mui/icons-material/Logout';
 
+import { getToken, logout } from '../services/auth'
+import api from "../services/api"
+
 export const mainListItems = (
     <React.Fragment>
         <ListItemButton href="/admin" >
@@ -45,10 +48,13 @@ export const secondaryListItems = (
     </React.Fragment>
 );
 
-function handleLogout() {
+async function handleLogout() {
     if (window.confirm("Deseja sair?")) {
-        localStorage.clear();
-        window.location.href = '/admin/login'
+        const response = await api.get("http://localhost:5000/api/usuarios/destroytoken", { headers: { token: getToken() } })
+        if (response.status === 200) {
+            logout()
+            window.location.href = "/admin/login"
+        }
     } else {
         alert('Não foi possivel encerrar a sessão!')
     }

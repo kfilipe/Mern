@@ -52,7 +52,7 @@ function Router() {
 
                 <Route path="/admin/produtos/cadastrar" element={
                     <PrivateRoute redirectTo="/admin/login">
-                        <ProdutoCadastrar />>
+                        <ProdutoCadastrar />
                     </PrivateRoute>
                 }
                 />

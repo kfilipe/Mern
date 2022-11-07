@@ -18,7 +18,7 @@ import { useParams } from 'react-router-dom'
 
 const mdTheme = createTheme();
 
-export default function UsuarioCadastrar() {
+export default function UsuarioEditar() {
 
     const [nome, setNome] = React.useState('')
     const [email, setEmail] = React.useState('')

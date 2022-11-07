@@ -12,7 +12,8 @@ import MuiAppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
-
+import { getNomeUsuario } from '../services/auth';
+import logotipo from '../assets/img/logotipo.png'
 
 
 
@@ -102,6 +103,7 @@ export default function MenuAdmin({ title }) {
                     >
                         {title}
                     </Typography>
+                    {getNomeUsuario()}
                 </Toolbar>
             </AppBar>
 
@@ -115,6 +117,7 @@ export default function MenuAdmin({ title }) {
                         px: [1],
                     }}
                 >
+                    <img style={{ width: 150, height: 50 }} src={logotipo} alt="Logotipo" />
                     <IconButton onClick={toggleDrawer}>
                         <ChevronLeftIcon />
                     </IconButton>
